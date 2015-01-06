@@ -3,4 +3,42 @@ layout: default
 ---
 
 <div class="home">
+
+<script>
+  var graphJSON = {
+    "nodes": [
+      "Blockchain",
+      "Bitcoin",
+      "Bitcoin Wallets",
+      "Bitcoin payments",
+      "Bitcoin micropayments",
+      "Consolidated Audit Trail",
+      "Identity",
+      "...",
+
+    ],
+    "edges": [
+      ["Blockchain", "Bitcoin"],
+      ["Blockchain", "Consolidated Audit Trail"],
+      ["Blockchain", "Identity"],
+      ["Blockchain", "..."],
+      ["Bitcoin", "Bitcoin Wallets"],
+      ["Bitcoin", "Bitcoin payments"],
+      ["Bitcoin", "Bitcoin micropayments"],
+    ]
+  };
+
+  jQuery(function(){
+    var graph = new Springy.Graph();
+    graph.loadJSON(graphJSON);
+
+    var springy = jQuery('#blockchainstuff').springy({
+      graph: graph
+    });
+  });
+</script>
+
+<canvas id="blockchainstuff" width="900" height="900" />
+
+
 </div>
